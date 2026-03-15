@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Blokify · Crazy Dead Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a14;
+    --surface: #13131f;
+    --border: rgba(255,255,255,.07);
+    --purple: #a855f7;
+    --cyan: #06b6d4;
+    --gold: #fbbf24;
+    --text: #c8c8d8;
+    --text-dim: #5a5a72;
+    --heading: #eeeef8;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    font-size: 15px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Background grid ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(168,85,247,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168,85,247,.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse at 15% 10%, rgba(168,85,247,.12) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 85%, rgba(6,182,212,.08) 0%, transparent 45%);
+  }
+
+  /* ── Layout ── */
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── Header ── */
+  header {
+    padding: 56px 0 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .studio-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 12px;
+  }
+
+  .studio-tag::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple);
+    box-shadow: 0 0 6px var(--purple);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .4; }
+  }
+
+  .game-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(40px, 8vw, 64px);
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #f97316, #ec4899, #a855f7, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 24px rgba(236,72,153,.35));
+    line-height: 1;
+  }
+
+  .doc-type {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .meta-item .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--text-dim);
+  }
+
+  /* ── Language toggle ── */
+  .lang-toggle {
+    display: flex;
+    gap: 4px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+    margin-left: auto;
+  }
+
+  .lang-btn {
+    padding: 5px 14px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--text-dim);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+  .lang-btn.active {
+    background: rgba(168,85,247,.2);
+    color: #c084fc;
+    border: 1px solid rgba(168,85,247,.3);
+  }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 40px;
+    animation: fadeIn .5s ease both;
+  }
+
+  .section:nth-child(2) { animation-delay: .05s; }
+  .section:nth-child(3) { animation-delay: .1s; }
+  .section:nth-child(4) { animation-delay: .15s; }
+  .section:nth-child(5) { animation-delay: .2s; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .section-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 11px;
+    color: var(--purple);
+    background: rgba(168,85,247,.1);
+    border: 1px solid rgba(168,85,247,.2);
+    border-radius: 6px;
+    padding: 2px 8px;
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--heading);
+    letter-spacing: .3px;
+  }
+
+  p {
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  ul {
+    list-style: none;
+    margin: 8px 0 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--text);
+  }
+
+  ul li::before {
+    content: '›';
+    color: var(--cyan);
+    font-size: 16px;
+    line-height: 1.6;
+    flex-shrink: 0;
+  }
+
+  .highlight-box {
+    background: rgba(255,255,255,.03);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--purple);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  .highlight-box.cyan {
+    border-left-color: var(--cyan);
+  }
+
+  .highlight-box.gold {
+    border-left-color: var(--gold);
+  }
+
+  a {
+    color: var(--cyan);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(6,182,212,.3);
+    transition: border-color .2s;
+  }
+
+  a:hover { border-color: var(--cyan); }
+
+  /* ── Contact card ── */
+  .contact-card {
+    background: rgba(168,85,247,.06);
+    border: 1px solid rgba(168,85,247,.2);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .contact-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .contact-info strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--heading);
+    margin-bottom: 3px;
+  }
+
+  .contact-info span {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .contact-info a {
+    color: var(--purple);
+    border-bottom-color: rgba(168,85,247,.3);
+  }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+    margin: 56px 0;
+    position: relative;
+  }
+
+  .divider::after {
+    content: attr(data-label);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg);
+    padding: 0 16px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-brand {
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px;
+    background: linear-gradient(135deg, #a855f7, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  footer span {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  /* ── Hidden content for lang toggle ── */
+  [data-lang] { display: none; }
+  [data-lang="es"] { display: block; }
+
+  /* ── Responsive ── */
+  @media (max-width: 480px) {
+    header { padding: 36px 0 32px; }
+    .meta-row { flex-direction: column; align-items: flex-start; }
+    .lang-toggle { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="studio-tag">Crazy Dead Studio</div>
+    <div class="game-title">Blokify</div>
+    <div class="doc-type">Privacy Policy · Política de Privacidad</div>
+    <div class="meta-row">
+      <div class="meta-item">
+        <span>Last updated</span>
+        <span class="dot"></span>
+        <span>March 15, 2026</span>
+      </div>
+      <div class="meta-item">
+        <span>Google Play</span>
+        <span class="dot"></span>
+        <span>Android</span>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════ ESPAÑOL ══════════════ -->
+  <div data-lang="es">
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>Información General</h2>
+      </div>
+      <p>Esta Política de Privacidad describe cómo Crazy Dead Studio ("nosotros", "nuestro") recopila, usa y protege la información de los usuarios de Blokify ("el Juego"), disponible en Google Play Store.</p>
+      <p>Al descargar y usar el Juego, aceptás esta política. Si no estás de acuerdo, por favor no uses el Juego.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Información que Recopilamos</h2>
+      </div>
+      <p>El Juego recopila la siguiente información:</p>
+      <ul>
+        <li>Datos de uso y rendimiento del juego (puntajes, niveles, estadísticas de sesión)</li>
+        <li>Identificadores de dispositivo (para publicidad y análisis)</li>
+        <li>Datos de interacción con anuncios (a través de Google AdMob)</li>
+        <li>Información técnica del dispositivo (modelo, versión de sistema operativo, idioma)</li>
+      </ul>
+      <div class="highlight-box cyan">
+        El Juego <strong>NO</strong> recopila ni solicita: nombre real, dirección de email, contraseñas, datos de ubicación, contactos, fotos ni ningún otro dato personal sensible.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Datos Almacenados Localmente</h2>
+      </div>
+      <p>El progreso del juego (puntajes, nivel, powerups, racha diaria, misiones) se almacena exclusivamente en el almacenamiento local de tu dispositivo mediante localStorage. Estos datos no se transmiten a ningún servidor externo propio de Crazy Dead Studio.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Publicidad — Google AdMob</h2>
+      </div>
+      <p>El Juego utiliza Google AdMob para mostrar anuncios. AdMob puede recopilar y usar datos para mostrar anuncios relevantes, incluyendo:</p>
+      <ul>
+        <li>Identificadores publicitarios del dispositivo (GAID/IDFA)</li>
+        <li>Datos de interacción con anuncios</li>
+        <li>Información técnica del dispositivo</li>
+      </ul>
+      <p>Google AdMob opera bajo la Política de Privacidad de Google, disponible en: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
+      <div class="highlight-box">
+        En regiones donde aplica el GDPR (Europa) o leyes similares, AdMob puede solicitar el consentimiento del usuario antes de personalizar anuncios. El Juego respeta estas configuraciones a través del SDK de AdMob.
+      </div>
+      <p>Para optar por no recibir anuncios personalizados: <strong>Configuración › Google › Anuncios › Inhabilitar personalización de anuncios</strong></p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Servicios de Terceros</h2>
+      </div>
+      <ul>
+        <li>Google AdMob (publicidad) — <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+        <li>Google Play Services (distribución y métricas básicas) — <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+      </ul>
+      <p>No compartimos datos personales con terceros más allá de los servicios mencionados.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Privacidad de Menores</h2>
+      </div>
+      <p>El Juego no está dirigido a menores de 13 años (o la edad mínima aplicable en tu región). No recopilamos intencionalmente información personal de menores. Si tenés conocimiento de que un menor nos ha proporcionado información, por favor contactanos para eliminarla.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2>Seguridad de los Datos</h2>
+      </div>
+      <p>Dado que el Juego no transmite datos personales a servidores propios y el progreso se almacena localmente, el riesgo de exposición de datos es mínimo. Nos comprometemos a utilizar prácticas estándar de la industria para proteger cualquier dato procesado a través de servicios de terceros.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2>Tus Derechos</h2>
+      </div>
+      <ul>
+        <li>Eliminar todos los datos del Juego desinstalando la aplicación</li>
+        <li>Optar por no recibir anuncios personalizados desde la configuración de tu dispositivo</li>
+        <li>Contactarnos para cualquier consulta relacionada con tu privacidad</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">09</span>
+        <h2>Cambios a esta Política</h2>
+      </div>
+      <p>Podemos actualizar esta Política de Privacidad periódicamente. Publicaremos la versión actualizada en esta página con una nueva fecha de actualización. Te recomendamos revisarla ocasionalmente.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">10</span>
+        <h2>Contacto</h2>
+      </div>
+      <p>Si tenés preguntas o inquietudes sobre esta Política de Privacidad, podés contactarnos en:</p>
+      <div class="contact-card">
+        <div class="contact-icon">🧟</div>
+        <div class="contact-info">
+          <strong>Crazy Dead Studio</strong>
+          <span>Email: <a href="mailto:crazydeadstudio@gmail.com">crazydeadstudio@gmail.com</a></span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /es -->
+
+  <!-- ══════════════ ENGLISH ══════════════ -->
+  <div data-lang="en">
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>General Information</h2>
+      </div>
+      <p>This Privacy Policy describes how Crazy Dead Studio ("we", "our") collects, uses, and protects information from users of Blokify ("the Game"), available on the Google Play Store.</p>
+      <p>By downloading and using the Game, you agree to this policy. If you disagree, please do not use the Game.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Information We Collect</h2>
+      </div>
+      <p>The Game collects the following information:</p>
+      <ul>
+        <li>Gameplay and performance data (scores, levels, session statistics)</li>
+        <li>Device identifiers (for advertising and analytics purposes)</li>
+        <li>Ad interaction data (through Google AdMob)</li>
+        <li>Technical device information (model, OS version, language)</li>
+      </ul>
+      <div class="highlight-box cyan">
+        The Game does <strong>NOT</strong> collect or request: real name, email address, passwords, location data, contacts, photos, or any other sensitive personal data.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Locally Stored Data</h2>
+      </div>
+      <p>Game progress (scores, level, powerups, daily streak, missions) is stored exclusively on your device's local storage via localStorage. This data is not transmitted to any external servers owned by Crazy Dead Studio.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Advertising — Google AdMob</h2>
+      </div>
+      <p>The Game uses Google AdMob to display advertisements. AdMob may collect and use data to show relevant ads, including:</p>
+      <ul>
+        <li>Device advertising identifiers (GAID/IDFA)</li>
+        <li>Ad interaction data</li>
+        <li>Technical device information</li>
+      </ul>
+      <p>Google AdMob operates under Google's Privacy Policy, available at: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
+      <div class="highlight-box">
+        In regions where GDPR (Europe) or similar laws apply, AdMob may request user consent before personalizing ads. The Game respects these settings through the AdMob SDK.
+      </div>
+      <p>To opt out of personalized ads: <strong>Settings › Google › Ads › Opt out of Ads Personalization</strong></p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Third-Party Services</h2>
+      </div>
+      <ul>
+        <li>Google AdMob (advertising) — <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+        <li>Google Play Services (distribution and basic metrics) — <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+      </ul>
+      <p>We do not share personal data with third parties beyond the services listed above.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Children's Privacy</h2>
+      </div>
+      <p>The Game is not directed to children under the age of 13 (or the applicable minimum age in your region). We do not knowingly collect personal information from children. If you are aware that a child has provided us with information, please contact us so we can delete it.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2>Data Security</h2>
+      </div>
+      <p>Since the Game does not transmit personal data to our own servers and progress is stored locally, the risk of data exposure is minimal. We are committed to using industry-standard practices to protect any data processed through third-party services.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2>Your Rights</h2>
+      </div>
+      <ul>
+        <li>Delete all Game data by uninstalling the application</li>
+        <li>Opt out of personalized ads through your device settings</li>
+        <li>Contact us with any privacy-related inquiries</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">09</span>
+        <h2>Changes to This Policy</h2>
+      </div>
+      <p>We may update this Privacy Policy from time to time. We will post the updated version on this page with a new update date. We recommend reviewing it occasionally.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">10</span>
+        <h2>Contact</h2>
+      </div>
+      <p>If you have questions or concerns about this Privacy Policy, you can contact us at:</p>
+      <div class="contact-card">
+        <div class="contact-icon">🧟</div>
+        <div class="contact-info">
+          <strong>Crazy Dead Studio</strong>
+          <span>Email: <a href="mailto:crazydeadstudio@gmail.com">crazydeadstudio@gmail.com</a></span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /en -->
+
+  <footer>
+    <span class="footer-brand">Crazy Dead Studio</span>
+    <span>© 2026 · Blokify · All rights reserved</span>
+  </footer>
+
+</div><!-- /wrapper -->
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = el.dataset.lang === lang ? 'block' : 'none';
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+  }
+
+  // Auto-detect browser language
+  const browserLang = navigator.language?.toLowerCase().startsWith('es') ? 'es' : 'en';
+  setLang(browserLang);
+</script>
+</body>
+</html>
